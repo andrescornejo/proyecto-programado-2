@@ -12,6 +12,9 @@ while not done:
 
     # action = env.action_space.sample()
     action = [0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0]
+    action = [0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1]
+    action = [0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1]
+    action = [0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1]
 
     ob, rew, done, info = env.step(action)
     print("ob",ob,"Action ", action, "Reward ", rew, "done ", done, "info", info)

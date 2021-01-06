@@ -1,3 +1,6 @@
 *.docx
 roms/
 *.nes
+*.md
+*.bk2
+src/SuperMarioBros-Nes/
