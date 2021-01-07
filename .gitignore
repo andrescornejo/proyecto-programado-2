@@ -1,6 +1,18 @@
+# Misc file types
 *.docx
 roms/
 *.nes
-*.md
 *.bk2
 src/SuperMarioBros-Nes/
+neat-test/
+
+# Python venv
+# To ignore symlinks: 'find * -type l >> .gitignore'
+bin/
+lib/
+lib64/
+pyvenv.cfg
+bin/python3
+bin/python3.8
+bin/python
+lib64
