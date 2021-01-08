@@ -1,0 +1,291 @@
+\documentclass{article}
+
+%Formatting
+\usepackage{graphicx}
+\graphicspath{ {img/} }
+\usepackage{listings}
+\usepackage[utf8]{}
+\usepackage[spanish]{babel}
+\usepackage[backend=biber, style=authoryear-icomp]{biblatex}
+\addbibresource{ref.bib}
+% Change to stars in nested itemize lists.
+\renewcommand{\labelitemii}{$\star$}
+\author{Andrés Cornejo, Alexander} % TODO
+\date{Enero 18, 2021}
+
+\title{Soluciones automatizadas para videojuegos utilizando algoritmos genéticos y probabilísticos}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+  TODO
+  Objetivo literal a lo que sale en la introduccion
+\end{abstract}
+
+\section{Introducción}
+En la ciencia de la computación, uno de los auges más grandes de la última década es el de la inteligencia artificial. La rama de la computación que en los años ochenta era considerada intratable por su alta demanda de recursos computacionales, hoy es utilizada en todos los aspectos del diario vivir de los seres humanos. Algunos ejemplos de esto son GPS, servicios de streaming, artículos y vídeos presentados por redes sociales, filtros de datos, etc. Sin embargo, ¿Qué tan factible es el uso de algoritmos de Machine Learning para casos de uso modernos, desde un punto de vista de recursos computacionales? Resolver esta pregunta es el objetivo principal de esta investigación. Específicamente, se va a abordar un algoritmo de Machine Learning supervisado (Árbol de decisión), y otro de Machine Learning no supervisado (K-Means clustering). Otras preguntas planteadas a lo largo de esta investigación son: ¿Qué tan demandante es el algoritmo de árbol de decisión en un contexto moderno?, ¿Qué tan demandante es el algoritmo de clustering K-Means en un contexto moderno? y finalmente, ¿Qué tan comparables son los algoritmos de Machine learning supervisado comparados a los no supervisados? (Específicamente árbol de decisión versus K-Means).
+
+Para resolver estas preguntas, el método de resolución es el siguiente. Primero se programará cada algoritmo. Una vez programados, para cada uno, individualmente, se realizará una medición empírica, un análisis del factor de crecimiento, una medición analítica, una medición gráfica. Finalmente, para hacer la comparación de los algoritmos, se va a hacer un análisis de resultados.
+
+La estructura de esta investigación es la siguiente. Primero se hace una síntesis de trabajos relacionados, seguido por la solución propuesta al objetivo general. Luego se expondrá el algoritmo Árbol de decisión y su metodología de investigación. Siguiente se expondrá el algoritmo K-Means Clustering y su metodología de investigación. Luego se hará una evaluación de resultados, donde se van a comparar los algoritmos. Por último, se hará una síntesis de la investigación y recomendaciones para trabajos futuros.
+
+\section{Trabajos relacionados}
+
+Trabajos relacionados
+
+\section{Solución propuesta}
+Para lograr determinar si los algoritmos de Machine Learning, Árbol de decisión y K-Means, se tiene que realizar un análisis empírico de sus rendimientos y sus complejidades.
+
+El análisis empírico consiste en:
+\begin{itemize}
+  \item Medición empírica
+  \item Medición del factor de crecimiento
+  \item Medición analítica
+  \item Medición gráfica
+\end{itemize}
+
+%%% Algoritmo genetico.
+
+\section{Metodología de investigación para el algoritmo genético (NEAT)}
+\subsection{¿Qué es NEAT?}
+NEAT (Neuroevolution of augmenting topologies) es la evolución artificial de redes neuronales utilizando algoritmos genéticos. \textcite{neat2002}
+
+\textbf{¿Cómo funciona?}
+
+\begin{itemize}
+        \item Seleccionar el mejor atributo usando Medidas de selección de atributos (ASM) para dividir los registros.
+        \item Dividir recursivamente el conjunto de datos hasta que:
+        \begin{itemize}
+          \item No existan más atributos
+          \item No existan más instancias
+          \item Todas las tuplas pertenecen al mismo atributo
+        \end{itemize}
+\end{itemize}
+
+Se utilizó el índice Gini para calcular el nivel de impureza, el cual funciona con la variable objetivo categórica “éxito” o  “fracaso”, es decir solo realiza divisiones binarias. De esta forma, cuanto mayor sea el valor de Gini, mayor será la homogeneidad de los datos divididos.
+El índice de Gini es: \[G = \sum_{k}p_{k}(1-p_{k})\]
+Se suma, para todas las clases, el producto de su proporción por 1 menos su proporción.
+El algoritmo empieza creando un nodo raíz con todos los datos, sin dividir, para el primer nodo superior del árbol. Al crear el nodo con los datos, de una vez se calcula el índice Gini y se elige el feature de decisión. Esto garantiza que cada nodo nuevo ya tenga su feature de división sin tener que hacer una llamada específica del árbol para que lo haga. Cada vez que se crea un nodo y establece su feature de decisión, este feature es eliminado del set de características de clasificación.
+Seguidamente se realizan las inserciones de forma recursiva hasta que ya no queden features de división.
+Por último, la predicción para cualquier registro de datos se realizaría recorriendo el árbol de arriba abajo respondiendo a las preguntas planteadas hasta llegar a una hoja. Si se trata de una hoja pura, se devolverá como predicción la clase de las muestras contenidas en ella. Si, por el contrario, se trata de una hoja impura, se devolverá la clase mayoritaria entre las muestras de dicho nodo. La precisión se puede calcular comparando los valores reales del conjunto de pruebas y los valores pronosticados.
+
+\subsection{Medición empírica}
+Nombre del algoritmo de aprendizaje supervisado: \textit{Árbol de decisión}
+
+\begin{center}
+  \includegraphics[scale=0.7]{a-m_med-emp}
+\end{center}
+
+\subsection{Determinar el factor de crecimiento}
+Nombre del algoritmo de aprendizaje supervisado: \textit{Árbol de decisión}
+
+\begin{center}
+  \includegraphics[scale=1.2]{a-m_f-crec}
+\end{center}
+
+Clasificación del comportamiento de las \textbf{asignaciones}: \(O(1)\)
+
+Clasificación del comportamiento de las \textbf{comparaciones}: \(O(1)\)
+
+\subsection{Clasificación según su entrada de los datos utilizando la notación O Grande, \(\Theta\) y \(\Omega\):}
+
+Conjunto con \textbf{200} datos:  \(\Omega\)
+
+Conjunto con \textbf{500} datos: \(\Theta\)
+
+Conjunto con \textbf{1000} datos:  O Grande
+
+\subsection{Medición analítica}
+Nombre del algoritmo de aprendizaje supervisado: \textit{Árbol de decisión}
+
+\begin{center}
+  \includegraphics[scale=1.2]{a-m_code}
+\end{center}
+
+\textbf{Resultados:}
+
+Total (la suma de todos los pasos): \(O(n) = 6n+18\)
+
+Clasificación en notación O Grande: \(O(n)\)
+
+\subsection{Medición gráfica}
+
+\begin{center}
+  \includegraphics[scale=1.5]{a-m_avt}
+  \includegraphics[scale=1.4]{a-m_cvt}
+\end{center}
+
+%%%K-MEANS%%%
+
+\section{Metodología de investigación para K-Means clustering}
+\subsection{¿Qué es el algoritmo K-Means clustering?}
+El algoritmo de K-Means clustering es un método para clasificar un conjunto de datos, en grupos o \textit{clusters}. Este algoritmo es diferente a otros algoritmos de clustering jerárquicos porque se le ingresan la cantidad de clusters que tiene que generar, antes de ser ejecutado.
+
+El algoritmo comienza con \textit{k centroides} (puntos en el espacio que representa el centro de un cluster), los cuales son posicionados aleatoriamente. Luego se asigna cada objeto a su centroide más cercano. Después de cada asignación, los centroides se mueven a la localización promedio de todos los nodos asignados. El proceso se repite hasta que los centroides se dejen de mover. \textcite{oreillyML}
+
+\subsection{Medición empírica}
+Nombre del algoritmo de aprendizaje no supervisado: \textit{K-Means}
+
+Detalles generales:
+
+\begin{itemize}
+  \item La cantidad de clusters para todas las pruebas son 3.
+  \item El conjunto de datos fue generado con la librería Sklearn, utilizando el método make\textunderscore{}blobs.
+  \item La variable que cambia por cada prueba es la cantidad de puntos.
+  \item Al ser no supervisado, el límite establecido para las iteraciones es 300.
+\end{itemize}
+
+\begin{center}
+  \includegraphics[scale=0.7]{k-m_med-emp}
+\end{center}
+\newpage
+\subsection{Determinar el factor de crecimiento}
+Nombre del algoritmo de aprendizaje no supervisado: \textit{K-Means}
+
+\begin{center}
+  \includegraphics[scale=1.3]{k-m_f-crec}
+\end{center}
+
+Clasificación del comportamiento de las \textbf{asignaciones}: \(O(n)\)
+
+Clasificación del comportamiento de las \textbf{comparaciones}: \(O(n)\)
+
+\subsection{Clasificación según su entrada de los datos utilizando la notación O Grande, \(\Theta\) y \(\Omega\):}
+
+Conjunto de datos \textbf{ordenado:} O Grande
+
+Conjunto de datos \textbf{con orden inverso:} \(\Theta\)
+
+Conjunto de datos \textbf{con orden aleatorio:} \(\Omega\)
+
+\newpage
+\subsection{Medición analítica}
+Nombre del algoritmo de aprendizaje no supervisado: \textit{K-Means}
+\begin{lstlisting}[language=Python]
+import numpy as np
+
+def euclidean_distance(x1,x2):
+    return np.sqrt(np.sum((x2-x1)**2))
+# O(n) = 2
+
+class KMeans:
+
+    def __init__(self, K=5, max_iters=100):
+        self.K = K
+        self.max_iters = max_iters
+
+        self.cluster = [[] for _ in range (self.K)]
+        self.centroids = []
+
+    #O(n) = 2n + 6 + (2) = 2n + 8
+
+    def predict(self, X):
+        self.X = X
+        self.n_samples, self.n_features = X.shape
+
+        random_sample_idxs = np.random.choice(self.n_samples,
+          self.K, replace=False)
+        self.centroids = [self.X[idx] for idx in random_sample_idxs]
+
+        for _ in range(self.max_iters):
+            self.clusters = self._create_clusters(self.centroids)
+
+            centroids_old = self.centroids
+            self.centroids = self._get_centroids(self.clusters)
+            if self._is_converged(centroids_old, self.centroids):
+                break
+
+        return self._get_cluster_labels(self.clusters)
+
+    # O(n) = 2n + 3 + 3 + 2n + 6 + (2n + 6) = 6n + 18
+
+    def _get_cluster_labels(self, clusters):
+        labels = np.empty(self.n_samples)
+        for cluster_idx, cluster in enumerate(clusters):
+            for sample_idx in cluster:
+                labels[sample_idx] = cluster_idx
+        return labels
+
+    # El for loop anidado son la cantidad de clusters (k).
+    # O(n) =  k*n +3 + 1 + (6n + 18) = kn + 6n + 22
+
+    def _create_clusters(self, centroids):
+        clusters = [[] for _ in range (self.K)]
+        for idx, sample in enumerate(self.X):
+            centroid_idx = self._closest_centroid(sample, centroids)
+            clusters[centroid_idx].append(idx)
+        return clusters
+
+    # O(n) = 2n + 3 + 2n + 4 + (kn + 6n + 22) = kn + 10n + 29
+
+    def _closest_centroid(self, sample, centroids):
+        distances = [euclidean_distance(sample,
+          point) for point in centroids]
+        closest_idx = np.argmin(distances)
+        return closest_idx
+
+    #O(n) = 2n + 4 + (kn + 10n + 29) = kn + 12n + 33
+
+    def _get_centroids(self, clusters):
+        centroids = np.zeros((self.K, self.n_features))
+        for cluster_idx, cluster in enumerate(clusters):
+            cluster_mean = np.mean(self.X[cluster], axis=0)
+            centroids[cluster_idx] = cluster_mean
+        return centroids
+
+    #O(n) = 2n + 4 + 1 + (kn + 12n + 33) = kn + 14n + 38
+
+    def _is_converged(self, centroids_old, centroids):
+        distances = [euclidean_distance(centroids_old[i],
+          centroids[i]) for i in range(self.K)]
+        return sum(distances) == 0
+
+    #O(n) = 2n + 4 + (kn + 14n + 38) = kn + 16n + 42
+    #O(n) = kn + 16n + 42
+
+\end{lstlisting}
+
+\textbf{Resultados:}
+
+Total (la suma de todos los pasos): \(O(n) = kn + 16n + 42\)
+
+Clasificación en notación O Grande: \(O(n)\)
+
+\textbf{Nota: }\(k\) es la cantidad de clusters, definida por el usuario.
+
+\subsection{Medición gráfica}
+
+\begin{center}
+  \includegraphics[scale=0.6]{k-m_avt}
+  \includegraphics[scale=0.6]{k-m_cvt}
+\end{center}
+
+\section{Evaluación de resultados}
+\subsection{Árbol de decisión}
+La predicción para cualquier punto se realizaría recorriendo el árbol de arriba abajo respondiendo a las preguntas planteadas hasta llegar a una hoja. Si se trata de una hoja pura, se devolverá como predicción la clase de las muestras contenidas en ella. Si, por el contrario, se trata de una hoja impura, se devolverá la clase mayoritaria entre las muestras de dicho nodo.
+El Árbol de decisión funciona mejor si se hace un análisis previo de los datos, deben tratarse para que se adapten al algoritmo y obtener mayor precisión. También debe controlarse la profundidad del árbol cuando se requiere entrenar el modelo con características específicas y no todas las que contiene el set de datos.
+Esto último ayuda a evitar el sobreajuste en las divisiones de los datos en cada nodo, lo que provocaría que las predicciones se vuelvan poco confiables.
+Por el contrario, si no se hacen suficientes divisiones, entonces se incurre en falta de ajuste y también conduce a errores en las predicciones.
+\subsection{K-Means clustering}
+\textit{Después de realizar un análisis empírico se ha obtenido un resultado lineal en complejidad en tiempo.}
+Lo cual, volviendo al objetivo general de esta investigación: ``¿Qué tan factible es el uso de algoritmos de Machine Learning para casos de uso modernos, desde un punto de vista de recursos computacionales?''. Queda establecido que el algoritmo K-Means clustering es muy liviano en su carga computacional. Lo cual lo hace muy tratable y factible para casos de uso modernos. En su peor caso tuvo en rendimiento de \(O(2n)\), y en su mejor caso tuvo un rendimiento de \(O(n)\). Ambos casos fueron muy eficientes desde un punto de vista de recursos computacionales.
+
+\section{Conclusiones}
+Después de un análisis extenso, se obtuvieron los resultados deseados para esta investigación. Ambos, el algoritmo de K-Means y Árbol de decisión son muy eficientes y livianos en términos de complejidad en tiempo. Esto responde las preguntas principales de esta investigación. Los algoritmos estudiados son muy tratables y el uso en aplicaciones modernas es recomendado, siempre que sea el algoritmo indicado para el trabajo.
+
+\section{Recomendaciones para trabajos futuros}
+\subsection{Recomendaciones generales}
+Para futuras investigaciones es recomendable probar más algoritmos de Machine Learning. También es recomendado probar otros algoritmos en el ámbito de Inteligencia Artificial.
+
+\subsection{Recomendaciones para el algoritmo K-Means}
+Es recomendable utilizar más tamaños de datos de entrada. Además, si se quiere un reto más grande, este algoritmo se puede programar en planos tri-dimensionales. Finalmente se pueden realizar pruebas con un número mayor de clusters y medir qué tanto afecta el rendimiento del algoritmo.
+
+\subsection{Recomendaciones para el algoritmo de Árbol de decisión}
+Es recomendable hacer mediciones con otra implementación, dado que los resultados de esta investigación son altamente improbables. Dado que un algoritmo de esta complejidad es muy difícil que su rendimiento sea constante en complejidad en tiempo. También es recomendable probar con más conjuntos de datos, para llevar el algoritmo a su límite.
+\newpage
+
+\printbibliography{}
+
+\end{document}
