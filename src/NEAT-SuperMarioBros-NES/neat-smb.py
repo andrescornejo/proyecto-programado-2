@@ -7,8 +7,8 @@ import os
 os.environ['DISPLAY'] = ':1'
 
 # Variable debug: utilizada para imprimir la pantalla del NES, y ver la posicion de Mario en el eje x.
-DEBUG = True
-#DEBUG = False
+#DEBUG = True
+DEBUG = False
 
 #Crear el ambiente de gym-retro
 env = retro.make('SuperMarioBros-Nes', 'Level1-1') 
@@ -120,7 +120,7 @@ config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction,
 #p = neat.Population(config)
 
 # Si se quiere empezar a entrenar desde cierto punto, utilizar la siguiente linea.
-p = neat.checkpoint.Checkpointer.restore_checkpoint('winner/winner_run')
+p = neat.checkpoint.Checkpointer.restore_checkpoint('neat-checkpoint-153')
 
 # Imprimir la estadisticas generacionales y generar checkpoints.
 p.add_reporter(neat.StdOutReporter(True))
