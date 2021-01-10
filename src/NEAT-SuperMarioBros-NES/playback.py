@@ -7,8 +7,8 @@ import time
 import os
 os.environ['DISPLAY'] = ':1'
 
-env = retro.make('SuperMarioBros-Nes', 'Level1-1') 
-# env = retro.make('SuperMarioBros-Nes', 'Level1-1', record=True) 
+#env = retro.make('SuperMarioBros-Nes', 'Level1-1') 
+env = retro.make('SuperMarioBros-Nes', 'Level1-1', record=True) 
 
 imgarray = []
 
@@ -52,6 +52,7 @@ xpos_hi = 0
 xpos_max = 0
 stag_counter = 0
 
+won = False
 done = False
 
 while not done:

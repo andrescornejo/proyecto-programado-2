@@ -117,10 +117,10 @@ config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction,
                      'neural-config')
 
 # Si se quiere empezar a entrenar desde cero, utilizar la siguiente linea.
-#p = neat.Population(config)
+p = neat.Population(config)
 
 # Si se quiere empezar a entrenar desde cierto punto, utilizar la siguiente linea.
-p = neat.checkpoint.Checkpointer.restore_checkpoint('neat-checkpoint-153')
+#p = neat.checkpoint.Checkpointer.restore_checkpoint('neat-checkpoint-172')
 
 # Imprimir la estadisticas generacionales y generar checkpoints.
 p.add_reporter(neat.StdOutReporter(True))
