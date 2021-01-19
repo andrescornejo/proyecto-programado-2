@@ -10,3 +10,7 @@
 - [ ] Implementar el algoritmo probabilístico
 - [ ] Hacer la documentación del algoritmo probabilístico
 
+Lista específica del algoritmo genético:
+- Documentar el proceso de reproduccion y crossover genético
+- Hacer las tablas
+- Hacer las mediciones analiticas
