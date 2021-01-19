@@ -7,9 +7,15 @@ z_old/
 *.bk2
 *.mp4
 *.el
+*.aux
+*.bbl
+*.blg
+*.out
+*.bcf
 src/NEAT-SuperMarioBros-NES/SuperMarioBros-Nes/
 neat-test/
 neat-checkpoint-*
+doc/_minted-proy2
 
 # Python venv
 # Note: To ignore symlinks use 'find * -type l >> .gitignore'
