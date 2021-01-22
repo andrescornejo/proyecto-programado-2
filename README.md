@@ -1,4 +1,4 @@
-# proyecto-programado-2
+# Proyecto programado 2: algoritmo genético y probabilístico
 Repositorio para el segundo proyecto programado del curso análisis de algoritmos. 
 II Semestre - 2020
 ITCR
