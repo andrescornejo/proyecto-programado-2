@@ -17,7 +17,7 @@ def downscale_image(ob, size_x, size_y):
     """Baja la resolucion de la pantalla para alistarla para la red neuronal."""
     # Cambiar el tamano de la imageen a las dimensiones especificadas.
     ob = cv2.resize(ob, (size_x, size_y))
-    # Cambiar la imagen a blano y negro.
+    # Cambiar la imagen a blanco y negro.
     ob = cv2.cvtColor(ob, cv2.COLOR_BGR2GRAY)
     # Convertir la imagen en una matriz de dos dimensiones.
     ob = np.reshape(ob, (size_x, size_y))
